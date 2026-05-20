@@ -2,7 +2,7 @@ from openai import OpenAI
 from googleapiclient.discovery import build
 import pickle
 import os
-on
+
 # ---------------------------------
 # OPENROUTER API
 # ---------------------------------
