@@ -24,6 +24,11 @@ jobs:
           pip install openai
           pip install google-api-python-client
 
+      - name: Restore Blogger Token
+        run: |
+          echo "${{ secrets.BLOGGER_TOKEN }}" > token.txt
+          base64 -d token.txt > token.pkl
+
       - name: Run SouthSync Automation
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
