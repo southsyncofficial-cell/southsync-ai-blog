@@ -25,9 +25,14 @@ jobs:
           pip install google-api-python-client
 
       - name: Restore Blogger Token
+        shell: bash
         run: |
-          echo "${{ secrets.BLOGGER_TOKEN }}" > token.txt
-          base64 -d token.txt > token.pkl
+          echo "${{ secrets.BLOGGER_TOKEN }}" | base64 --decode > token.pkl
+
+      - name: Verify token.pkl
+        run: |
+          ls -la
+          file token.pkl
 
       - name: Run SouthSync Automation
         env:
